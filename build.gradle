@@ -1,0 +1,38 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.4.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'com.caihao'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	maven { url 'https://maven.aliyun.com/repository/public/' }
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.3.RELEASE'
+	// https://mvnrepository.com/artifact/org.projectlombok/lombok
+	compile group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.1.3.RELEASE'
+//	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.1.3.RELEASE'
+
+	// springboot 打war包形式放到tomcat下运行时，使用下面代码
+//	providedRuntime group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.1.3.RELEASE'
+
+}
+
+test {
+	useJUnitPlatform()
+}
